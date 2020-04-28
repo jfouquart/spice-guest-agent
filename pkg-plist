@@ -1,6 +1,7 @@
 bin/spice-vdagent
 etc/rc.d/spice-agentd
 etc/xdg/autostart/spice-vdagent.desktop
+etc/X11/xorg.conf.d/spice_vdagent_tablet.conf
 man/man1/spice-vdagent.1.gz
 man/man1/spice-vdagentd.1.gz
 sbin/spice-vdagentd

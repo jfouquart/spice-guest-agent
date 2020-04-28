@@ -3,7 +3,6 @@
 
 PORTNAME=	spice-agent
 PORTVERSION=	0.18.0
-DISTVERSIONPREFIX=	
 CATEGORIES=	emulators
 
 MAINTAINER=	jfouquart@hotmail.fr
@@ -18,7 +17,6 @@ LIB_DEPENDS=	libdbus-1.so:devel/dbus
 RUN_DEPENDS=	alsa-lib>=1.1.1_1:audio/alsa-lib \
 		gtk3>=3.12:x11-toolkits/gtk30 \
 		spice-protocol>=0.12.15:devel/spice-protocol
-		
 
 GNU_CONFIGURE=	yes
 USES=		autoreconf gmake pathfix pkgconfig xorg
@@ -33,6 +31,11 @@ GL_COMMIT=	b190b1790219accae24166a36165ce66e8e02fd3
 USE_RC_SUBR=	spice-agentd
 
 post-patch:
-	@${REINPLACE_CMD} 's|Exec=.*|Exec=${SH} -c "${PREFIX}/bin/spice-vdagent -x"|' ${WRKSRC}/data/spice-vdagent.desktop
+	@${REINPLACE_CMD} 's|Exec=.*|Exec=${PREFIX}/bin/spice-vdagent -x|' ${WRKSRC}/data/spice-vdagent.desktop
+
+post-install:
+	${MKDIR} ${STAGEDIR}${PREFIX}/etc/X11/xorg.conf.d
+	${INSTALL_DATA} ${FILESDIR}/spice_vdagent_tablet.conf \
+		${STAGEDIR}${PREFIX}/etc/X11/xorg.conf.d
 
 .include <bsd.port.mk>
