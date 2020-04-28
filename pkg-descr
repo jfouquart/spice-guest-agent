@@ -1,0 +1,1 @@
+The spice agent for Linux consists of 2 parts, a daemon spice-vdagentd and a per X-session process spice-vdagent. The daemon gets started in Spice guests through a Sys-V initscript or a systemd unit. The per X-session gets automatically started in desktop environments which honor /etc/xdg/autostart, and under gdm.

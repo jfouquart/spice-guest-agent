@@ -1,0 +1,28 @@
+#!/bin/sh
+#
+# PROVIDE: spice_agent
+# REQUIRE: DAEMON
+# KEYWORD: nojail
+#
+
+#
+# Add the following lines to /etc/rc.conf to enable spice-agent:
+#
+#spice_agent_enable="YES"
+#
+# -x -X -S /var/run/spice-vdagent-sock -u /dev/uinput
+
+. /etc/rc.subr
+
+name=spice_agent
+rcvar=spice_agent_enable
+
+load_rc_config $name
+
+spice_agent_enable=${spice_agent_enable:-"NO"}
+spice_agent_flags="-X"
+
+spice_agent_bin=%%LOCALBASE%%/sbin/spice-vdagentd
+command=${spice_agent_bin}
+
+run_rc_command "$1"

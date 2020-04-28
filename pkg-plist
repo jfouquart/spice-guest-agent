@@ -1,0 +1,9 @@
+bin/spice-vdagent
+etc/rc.d/spice-agentd
+etc/xdg/autostart/spice-vdagent.desktop
+man/man1/spice-vdagent.1.gz
+man/man1/spice-vdagentd.1.gz
+sbin/spice-vdagentd
+share/gdm/autostart/LoginWindow/spice-vdagent.desktop
+share/gdm/greeter/autostart/spice-vdagent.desktop
+@dir /var/run/spice-vdagentd
