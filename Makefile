@@ -31,7 +31,7 @@ GL_COMMIT=	b190b1790219accae24166a36165ce66e8e02fd3
 USE_RC_SUBR=	spice-agentd
 
 post-patch:
-	@${REINPLACE_CMD} 's|Exec=.*|Exec=${PREFIX}/bin/spice-vdagent -x|' ${WRKSRC}/data/spice-vdagent.desktop
+	@${REINPLACE_CMD} 's|Exec=.*|Exec=${SH} -c "${PREFIX}/bin/spice-vdagent -x \&"|' ${WRKSRC}/data/spice-vdagent.desktop
 
 post-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/etc/X11/xorg.conf.d
