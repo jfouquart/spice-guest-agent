@@ -14,7 +14,7 @@
 2. Enable spice-agentd at startup with:
    # sysrc spice_agent_enable=YES
 
-   For FreeBSD 12 and inferior, you have to do 
+   For FreeBSD 12.x and inferior, you have to do 
    # sysrc spice_agent_flags=-X
 
 3. Start the service:

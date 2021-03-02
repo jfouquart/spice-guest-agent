@@ -28,10 +28,20 @@ GL_ACCOUNT=	spice/linux
 GL_PROJECT=	vd_agent
 GL_COMMIT=	b190b1790219accae24166a36165ce66e8e02fd3
 
+SUB_FILES=	pkg-message
+
 USE_RC_SUBR=	spice-agentd
 
+.include <bsd.port.options.mk>
+
+.if ${OSVERSION} >= 1300000
+REPLACE_CMD=${PREFIX}/bin/spice-vdagent
+.else
+REPLACE_CMD=${SH} -c "${PREFIX}/bin/spice-vdagent -x \&"
+.endif
+
 post-patch:
-	@${REINPLACE_CMD} 's|Exec=.*|Exec=${PREFIX}/bin/spice-vdagent|' ${WRKSRC}/data/spice-vdagent.desktop
+	@${REINPLACE_CMD} 's|Exec=.*|Exec=${REPLACE_CMD}|' ${WRKSRC}/data/spice-vdagent.desktop
 
 post-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/etc/X11/xorg.conf.d
