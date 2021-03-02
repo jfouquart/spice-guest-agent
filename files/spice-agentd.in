@@ -20,6 +20,7 @@ rcvar=spice_agent_enable
 load_rc_config $name
 
 spice_agent_enable=${spice_agent_enable:-"NO"}
+spice_agent_flags=${spice_agent_flags}
 
 spice_agent_bin=%%LOCALBASE%%/sbin/spice-vdagentd
 command=${spice_agent_bin}

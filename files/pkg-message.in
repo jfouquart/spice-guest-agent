@@ -1,0 +1,25 @@
+[
+{ type: install
+  message: <<EOM
+
+  emulators/spice-guest-agent includes an RC script:
+  %%PREFIX%%/etc/rc.d/spice-agentd
+
+1. You must add the following lines to /etc/devfs.conf
+   link	vtcon	virtio-ports
+
+   And restart service for apply the changes
+   # service devfs restart
+
+2. Enable spice-agentd at startup with:
+   # sysrc spice_agent_enable=YES
+
+   For FreeBSD 12 and inferior, you have to do 
+   # sysrc spice_agent_flags=-X
+
+3. Start the service:
+   # service spice-agentd start
+
+EOM
+}
+]
