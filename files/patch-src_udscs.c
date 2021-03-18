@@ -20,10 +20,10 @@
 +#if __FreeBSD__ >= 13
 +    new_conn->peer_cred.pid = peer_cred.cr_pid;
 +#else
-+    new_conn->peer_cred.pid = 0;
++    new_conn->peer_cred.pid = -1;
 +#endif
 +    new_conn->peer_cred.uid = peer_cred.cr_uid;
-+    new_conn->peer_cred.gid = peer_cred.cr_groups[0];
++    new_conn->peer_cred.gid = peer_cred.cr_ngroups > 0 ? peer_cred.cr_groups[0] : -1;
 +
      if (r != 0) {
          syslog(LOG_ERR, "Could not get peercred, disconnecting new client");
