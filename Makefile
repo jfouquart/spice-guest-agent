@@ -22,7 +22,7 @@ GNU_CONFIGURE=	yes
 USES=		autoreconf gmake pathfix pkgconfig xorg
 USE_XORG=	x11
 
-USE_GITLAB=     yes
+USE_GITLAB=	yes
 GL_SITE=	https://gitlab.freedesktop.org
 GL_ACCOUNT=	spice/linux
 GL_PROJECT=	vd_agent
@@ -35,9 +35,9 @@ USE_RC_SUBR=	spice-agentd
 .include <bsd.port.options.mk>
 
 .if ${OSVERSION} >= 1300000
-REPLACE_CMD=${PREFIX}/bin/spice-vdagent
+REPLACE_CMD=	${PREFIX}/bin/spice-vdagent
 .else
-REPLACE_CMD=${SH} -c "${PREFIX}/bin/spice-vdagent -x \&"
+REPLACE_CMD=	"${SH} -c '${PREFIX}/bin/spice-vdagent -x \&'"
 .endif
 
 post-patch:
