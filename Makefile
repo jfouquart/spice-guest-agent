@@ -37,11 +37,11 @@ USE_RC_SUBR=	spice-agentd
 .if ${OSVERSION} >= 1300000
 REPLACE_CMD=	${PREFIX}/bin/spice-vdagent
 .else
-REPLACE_CMD=	"${SH} -c '${PREFIX}/bin/spice-vdagent -x \&'"
+REPLACE_CMD=	${SH} -c "${PREFIX}/bin/spice-vdagent -x \&"
 .endif
 
 post-patch:
-	@${REINPLACE_CMD} 's|Exec=.*|Exec=${REPLACE_CMD}|' ${WRKSRC}/data/spice-vdagent.desktop
+	@${REINPLACE_CMD} -E 's|Exec=.*|Exec=${REPLACE_CMD}|' ${WRKSRC}/data/spice-vdagent.desktop
 
 post-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/etc/X11/xorg.conf.d
