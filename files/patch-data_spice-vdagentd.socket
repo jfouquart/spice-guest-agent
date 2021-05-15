@@ -1,0 +1,8 @@
+--- data/spice-vdagentd.socket.orig	2021-05-15 18:44:29 UTC
++++ data/spice-vdagentd.socket
+@@ -2,4 +2,4 @@
+ Description=Activation socket for spice guest agent daemon
+ 
+ [Socket]
+-ListenStream=/run/spice-vdagentd/spice-vdagent-sock
++ListenStream=/var/run/spice-vdagentd/spice-vdagent-sock

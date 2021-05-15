@@ -2,7 +2,7 @@
 # $FreeBSD: head/devel/spice-protocol/Makefile 490302 2019-01-14 16:41:59Z novel $
 
 PORTNAME=	spice-agent
-PORTVERSION=	0.18.0
+PORTVERSION=	0.21.0
 CATEGORIES=	emulators
 
 MAINTAINER=	jfouquart@hotmail.fr
@@ -16,7 +16,7 @@ BUILD_DEPENDS=	${LOCALBASE}/include/alsa/asoundlib.h:audio/alsa-lib \
 LIB_DEPENDS=	libdbus-1.so:devel/dbus
 RUN_DEPENDS=	alsa-lib>=1.1.1_1:audio/alsa-lib \
 		gtk3>=3.12:x11-toolkits/gtk30 \
-		spice-protocol>=0.12.15:devel/spice-protocol
+		spice-protocol>=0.14.3:devel/spice-protocol
 
 GNU_CONFIGURE=	yes
 USES=		autoreconf gmake pathfix pkgconfig xorg
@@ -26,7 +26,7 @@ USE_GITLAB=	yes
 GL_SITE=	https://gitlab.freedesktop.org
 GL_ACCOUNT=	spice/linux
 GL_PROJECT=	vd_agent
-GL_COMMIT=	b190b1790219accae24166a36165ce66e8e02fd3
+GL_COMMIT=	9306f18621f53723087d355ba0e4f63a96dd87f1
 
 SUB_FILES=	pkg-message
 

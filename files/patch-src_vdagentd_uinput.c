@@ -1,6 +1,6 @@
---- src/vdagentd/uinput.c.orig	2018-06-06 09:27:15 UTC
+--- src/vdagentd/uinput.c.orig	2021-01-13 08:52:43 UTC
 +++ src/vdagentd/uinput.c
-@@ -149,21 +149,35 @@ void vdagentd_uinput_update_size(struct vdagentd_uinpu
+@@ -144,21 +144,35 @@ void vdagentd_uinput_update_size(struct vdagentd_uinpu
      /* wheel */
      ioctl(uinput->fd, UI_SET_EVBIT, EV_REL);
      ioctl(uinput->fd, UI_SET_RELBIT, REL_WHEEL);
@@ -39,7 +39,7 @@
  {
      struct vdagentd_uinput *uinput = *uinputp;
      struct input_event event = {
-@@ -220,12 +234,12 @@ void vdagentd_uinput_do_mouse(struct vdagentd_uinput *
+@@ -228,12 +242,12 @@ void vdagentd_uinput_do_mouse(struct vdagentd_uinput *
      if (*uinputp && uinput->last.x != mouse->x) {
          if (uinput->debug)
              syslog(LOG_DEBUG, "mouse: abs-x %d", mouse->x);

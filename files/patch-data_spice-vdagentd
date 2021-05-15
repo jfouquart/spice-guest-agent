@@ -1,0 +1,11 @@
+--- data/spice-vdagentd.orig	2021-05-15 18:45:19 UTC
++++ data/spice-vdagentd
+@@ -27,7 +27,7 @@
+ exec="/usr/sbin/spice-vdagentd"
+ prog="spice-vdagentd"
+ port="/dev/virtio-ports/com.redhat.spice.0"
+-pid="/run/spice-vdagentd/spice-vdagentd.pid"
++pid="/var/run/spice-vdagentd/spice-vdagentd.pid"
+ 
+ [ -e /etc/sysconfig/$prog ] && . /etc/sysconfig/$prog
+ 
