@@ -46,21 +46,29 @@
      return g_simple_io_stream_new(g_unix_input_stream_new(fd, TRUE),
                                    g_unix_output_stream_new(fd, TRUE));
  }
-@@ -155,8 +178,15 @@ PidUid vdagent_connection_get_peer_pid_uid(VDAgentConn
+@@ -147,17 +170,19 @@ PidUid vdagent_connection_get_peer_pid_uid(VDAgentConn
+ {
+     VDAgentConnectionPrivate *priv = vdagent_connection_get_instance_private(self);
+     GSocket *sock;
+-    GCredentials *cred;
++    struct xucred peer_cred;
+     PidUid pid_uid = { -1, -1 };
++    socklen_t length = sizeof(peer_cred);
+ 
+     g_return_val_if_fail(G_IS_SOCKET_CONNECTION(priv->io_stream), pid_uid);
+ 
      sock = g_socket_connection_get_socket(G_SOCKET_CONNECTION(priv->io_stream));
-     cred = g_socket_get_credentials(sock, err);
-     if (cred) {
+-    cred = g_socket_get_credentials(sock, err);
+-    if (cred) {
 -        pid_uid.pid = g_credentials_get_unix_pid(cred, err);
 -        pid_uid.uid = g_credentials_get_unix_user(cred, err);
-+        struct xucred peer_cred;
-+        socklen_t length = sizeof(peer_cred);
-+        int r = getsockopt(g_socket_get_fd(sock), SOL_LOCAL, LOCAL_PEERCRED, &peer_cred, &length);
-+        if (r == 0) {
+-        g_object_unref(cred);
++
++    if (getsockopt(g_socket_get_fd(sock), SOL_LOCAL, LOCAL_PEERCRED, &peer_cred, &length) == 0) {
 +#if __FreeBSD__ >= 13
-+            pid_uid.pid = peer_cred.cr_pid;
++        pid_uid.pid = peer_cred.cr_pid;
 +#endif
-+            pid_uid.uid = peer_cred.cr_uid;
-+		}
-         g_object_unref(cred);
++        pid_uid.uid = peer_cred.cr_uid;
      }
  
+     return pid_uid;
