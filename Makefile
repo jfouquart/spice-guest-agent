@@ -15,6 +15,7 @@ BUILD_DEPENDS=	${LOCALBASE}/include/alsa/asoundlib.h:audio/alsa-lib \
 		spice-protocol>=0.12.15:devel/spice-protocol
 LIB_DEPENDS=	libdbus-1.so:devel/dbus
 RUN_DEPENDS=	alsa-lib>=1.1.1_1:audio/alsa-lib \
+		alsa-utils>0:audio/alsa-utils \
 		gtk3>=3.12:x11-toolkits/gtk30 \
 		spice-protocol>=0.14.3:devel/spice-protocol
 
