@@ -5,7 +5,7 @@
   emulators/spice-guest-agent includes an RC script:
   %%PREFIX%%/etc/rc.d/spice-agentd
 
-1. You must add the following lines to /etc/devfs.conf
+1. You must add the following line to /etc/devfs.conf
    link	vtcon	virtio-ports
 
    And restart service for apply the changes
