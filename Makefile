@@ -11,6 +11,7 @@ COMMENT=	Spice agent for FreeBSD
 LICENSE=	GPLv3
 
 BUILD_DEPENDS=	${LOCALBASE}/include/alsa/asoundlib.h:audio/alsa-lib \
+		${LOCALBASE}/include/linux/input.h:devel/evdev-proto \
 		gtk3>=3.12:x11-toolkits/gtk30 \
 		spice-protocol>=0.12.15:devel/spice-protocol
 LIB_DEPENDS=	libdbus-1.so:devel/dbus
