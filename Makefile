@@ -2,7 +2,7 @@
 # $FreeBSD: head/devel/spice-protocol/Makefile 490302 2019-01-14 16:41:59Z novel $
 
 PORTNAME=	spice-agent
-PORTVERSION=	0.21.0
+PORTVERSION=	0.22.1
 CATEGORIES=	emulators
 
 MAINTAINER=	jfouquart@hotmail.fr
@@ -28,7 +28,7 @@ USE_GITLAB=	yes
 GL_SITE=	https://gitlab.freedesktop.org
 GL_ACCOUNT=	spice/linux
 GL_PROJECT=	vd_agent
-GL_COMMIT=	9306f18621f53723087d355ba0e4f63a96dd87f1
+GL_COMMIT=	a9bb1752cede50757c47f6f8e1f52fb6bed93cd6
 
 SUB_FILES=	pkg-message
 
